@@ -1,1 +1,7 @@
 ./mlruns*
+**/.env
+**/.env.*
+!.env.example
+**/__pycache__
+**/.pytest_cache
+downloaded_artifacts/

@@ -1,5 +1,16 @@
 # 🚗 Segmentation Multi-Classes pour Véhicules Autonomes
 
+**Source de vérité** : [Forgejo](https://git.gregoiremureau.com/grgmro/oc-p08-street-vision) (auto-hébergé).
+
+```bash
+git clone https://git.gregoiremureau.com/grgmro/oc-p08-street-vision.git
+git clone https://git.gregoiremureau.com/grgmro/oc-p08-street-vision.git
+```
+
+Prod : https://api.gregoiremureau.com/ml/street-vision/
+
+Dataset complet : `./fetch-data.sh` (Cityscapes **hors** git ; petit échantillon déjà dans `notebooks/content/data/`).
+
 ## 📋 Description du Projet
 
 Ce projet développe un système de segmentation sémantique d'images de rue destiné aux véhicules autonomes. Il permet l'identification et la segmentation automatique de différents éléments urbains : véhicules, piétons, mobilier urbain, infrastructure routière, etc.
@@ -110,8 +121,8 @@ Utilisation de la bibliothèque **[segmentation_models](https://github.com/qubve
 #### Configuration rapide
 ```bash
 # Cloner le projet
-git clone https://github.com/GrgMdmn/OpenClassrooms_AI_Projects.git
-cd OpenClassrooms_AI_Projects/Project_8
+git clone https://git.gregoiremureau.com/grgmro/oc-p08-street-vision.git
+cd oc-p08-street-vision
 
 # Copier et adapter la configuration
 cp .env.example .env

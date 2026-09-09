@@ -1,0 +1,24 @@
+# CI légère — P8 Street Vision
+# Même fichier lu par Forgejo Actions et GitHub Actions (OC-ADR-001).
+# Le build Docker (SegFormer / TF) est Phase 6 : trop lourd pour le runner k3s (8 Gio).
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python syntax (no model load)
+        run: |
+          set -eu
+          apt-get update
+          apt-get install -y --no-install-recommends python3
+          python3 -m py_compile app/main.py app/streamlit_app.py utils/utils.py
