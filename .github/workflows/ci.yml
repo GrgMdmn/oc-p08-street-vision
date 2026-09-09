@@ -1,6 +1,6 @@
 # CI légère — P8 Street Vision
 # Même fichier lu par Forgejo Actions et GitHub Actions (OC-ADR-001).
-# Le build Docker (SegFormer / TF) est Phase 6 : trop lourd pour le runner k3s (8 Gio).
+# Le build Docker est `.github/workflows/cd.yml` (registry Forgejo, pas de cut-over k3s).
 
 name: CI
 

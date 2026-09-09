@@ -1,0 +1,63 @@
+# CD — build/push image vers le registry OCI Forgejo (OC-ADR-006).
+# Job uniquement sur git.gregoiremureau.com. DinD 8 Gio. Push via Tailscale
+# (extra_host jobs → NAS), pas Cloudflare (limite body 100 Mo).
+
+name: CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Dockerfile"
+      - "app/**"
+      - "utils/**"
+      - "start.sh"
+      - "nginx.conf"
+      - "cityscapes_config.json"
+      - ".github/workflows/cd.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-push:
+    if: contains(github.server_url, 'gregoiremureau.com')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Docker CLI (client only) + daemon DinD
+        run: |
+          set -eu
+          apt-get update
+          apt-get install -y --no-install-recommends ca-certificates curl
+          curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-27.5.1.tgz \
+            | tar -xz -C /tmp
+          install /tmp/docker/docker /usr/local/bin/docker
+          docker version
+          docker info
+
+      - name: Login registry Forgejo
+        run: |
+          set -eu
+          REGISTRY="${GITHUB_SERVER_URL#https://}"
+          echo "${{ secrets.PACKAGE_TOKEN }}" | docker login "${REGISTRY}" -u "${GITHUB_ACTOR}" --password-stdin
+
+      - name: Build and push
+        run: |
+          set -eu
+          REGISTRY="${GITHUB_SERVER_URL#https://}"
+          IMAGE="${REGISTRY}/grgmro/oc-p08-street-vision"
+          SHORT_SHA="$(echo "${GITHUB_SHA}" | cut -c1-12)"
+          export DOCKER_BUILDKIT=0
+          docker build \
+            -t "${IMAGE}:${SHORT_SHA}" \
+            -t "${IMAGE}:latest" \
+            -f Dockerfile \
+            .
+          docker push "${IMAGE}:${SHORT_SHA}"
+          docker push "${IMAGE}:latest"
+          echo "pushed ${IMAGE}:${SHORT_SHA} and :latest"
