@@ -50,7 +50,7 @@ jobs:
         run: |
           set -eu
           REGISTRY="${GITHUB_SERVER_URL#https://}"
-          IMAGE="${REGISTRY}/grgmro/oc-p08-street-vision"
+          IMAGE="${REGISTRY}/openclassroom-ai/oc-p08-street-vision"
           SHORT_SHA="$(echo "${GITHUB_SHA}" | cut -c1-12)"
           export DOCKER_BUILDKIT=0
           docker build \
@@ -74,7 +74,7 @@ jobs:
           fi
           echo "${DOCKER_HUB_TOKEN}" | docker login docker.io -u "${DOCKER_HUB_USER}" --password-stdin
           SHORT_SHA="$(echo "${GITHUB_SHA}" | cut -c1-12)"
-          SRC="${GITHUB_SERVER_URL#https://}/grgmro/oc-p08-street-vision"
+          SRC="${GITHUB_SERVER_URL#https://}/openclassroom-ai/oc-p08-street-vision"
           DST="docker.io/${DOCKER_HUB_USER}/street-vision_api"
           docker tag "${SRC}:latest" "${DST}:latest"
           docker tag "${SRC}:latest" "${DST}:${SHORT_SHA}"

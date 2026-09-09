@@ -1,10 +1,10 @@
 # 🚗 Segmentation Multi-Classes pour Véhicules Autonomes
 
-**Source de vérité** : [Forgejo](https://git.gregoiremureau.com/grgmro/oc-p08-street-vision) (auto-hébergé).
+**Source de vérité** : [Forgejo](https://git.gregoiremureau.com/openclassroom-ai/oc-p08-street-vision) (auto-hébergé).
 
 ```bash
-git clone https://git.gregoiremureau.com/grgmro/oc-p08-street-vision.git
-git clone https://git.gregoiremureau.com/grgmro/oc-p08-street-vision.git
+git clone https://git.gregoiremureau.com/openclassroom-ai/oc-p08-street-vision.git
+git clone https://git.gregoiremureau.com/openclassroom-ai/oc-p08-street-vision.git
 ```
 
 Prod : https://api.gregoiremureau.com/ml/street-vision/
@@ -121,7 +121,7 @@ Utilisation de la bibliothèque **[segmentation_models](https://github.com/qubve
 #### Configuration rapide
 ```bash
 # Cloner le projet
-git clone https://git.gregoiremureau.com/grgmro/oc-p08-street-vision.git
+git clone https://git.gregoiremureau.com/openclassroom-ai/oc-p08-street-vision.git
 cd oc-p08-street-vision
 
 # Copier et adapter la configuration
