@@ -61,3 +61,23 @@ jobs:
           docker push "${IMAGE}:${SHORT_SHA}"
           docker push "${IMAGE}:latest"
           echo "pushed ${IMAGE}:${SHORT_SHA} and :latest"
+
+      - name: Push Docker Hub (si secrets présents)
+        env:
+          DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
+          DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+        run: |
+          set -eu
+          if [ -z "${DOCKER_HUB_TOKEN:-}" ] || [ -z "${DOCKER_HUB_USER:-}" ]; then
+            echo "Pas de secrets DOCKER_HUB_* : skip."
+            exit 0
+          fi
+          echo "${DOCKER_HUB_TOKEN}" | docker login docker.io -u "${DOCKER_HUB_USER}" --password-stdin
+          SHORT_SHA="$(echo "${GITHUB_SHA}" | cut -c1-12)"
+          SRC="${GITHUB_SERVER_URL#https://}/grgmro/oc-p08-street-vision"
+          DST="docker.io/${DOCKER_HUB_USER}/street-vision_api"
+          docker tag "${SRC}:latest" "${DST}:latest"
+          docker tag "${SRC}:latest" "${DST}:${SHORT_SHA}"
+          docker push "${DST}:latest"
+          docker push "${DST}:${SHORT_SHA}"
+          echo "pushed ${DST}:latest"
