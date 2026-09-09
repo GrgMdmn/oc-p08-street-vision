@@ -14,6 +14,8 @@ Le repo contient uniquement un petit échantillon sous
 pour la démo. Le dataset complet (~11 Go leftImg8bit + gtFine) ne doit
 pas être versionné.
 
-Copie locale éventuelle : archive scolaire Nextcloud
-  Master_openclassroom_AI_Engineer/08 Traitez les images pour le système embarqué...
+Copie locale (Nextcloud, sync PC ↔ NAS, **pas** de lien de partage public pour l'instant) :
+  Master_openclassroom_AI_Engineer/08 …/data/
+    P8_Cityscapes_leftImg8bit_trainvaltest.zip
+    P8_Cityscapes_gtFine_trainvaltest.zip
 EOF
