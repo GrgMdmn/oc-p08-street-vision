@@ -1,6 +1,6 @@
 # 🚗 Segmentation Multi-Classes pour Véhicules Autonomes
 
-📘 Ce projet est également disponible en [anglais 🇬🇧](./README.md)
+📘 This project is also available in [English 🇬🇧](./README.md)
 
 **Source de vérité** : [Forgejo](https://git.gregoiremureau.com/openclassroom-ai/oc-p08-street-vision) (auto-hébergé).
 
