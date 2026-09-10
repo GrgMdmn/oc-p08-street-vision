@@ -6,7 +6,6 @@
 
 ```bash
 git clone https://git.gregoiremureau.com/openclassroom-ai/oc-p08-street-vision.git
-git clone https://git.gregoiremureau.com/openclassroom-ai/oc-p08-street-vision.git
 ```
 
 Prod : https://api.gregoiremureau.com/ml/street-vision/
