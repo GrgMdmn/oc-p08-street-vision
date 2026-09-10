@@ -1,6 +1,6 @@
 # CD — build/push image vers le registry OCI Forgejo (OC-ADR-006).
 # Job uniquement sur git.gregoiremureau.com. DinD 8 Gio. Push via Tailscale
-# (extra_host jobs → NAS), pas Cloudflare (limite body 100 Mo).
+# (extra_host jobs vers le NAS, pas Cloudflare, limite body 100 Mo).
 
 name: CD
 
